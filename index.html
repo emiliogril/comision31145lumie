@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comision 31855 React</title>
+    <title>Comision 31145 React</title>
     <style>
         picture {
         display: flex;
@@ -17,65 +17,62 @@
             box-shadow: 0 0 15px #555;
             margin-bottom: 10px;
         }
-        .disabled {
-            opacity: 0.5
-        }
     </style>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
+  </head>
   <body>
-    <h1>Bienvenido al curso de ReactJS comision 31855</h1>
-    <p>parrafo</p>
+    <h1>Bienvenido al curso de ReactJS</h1>
     <!-- <picture>
-        <img src="https://randomuser.me/api/portraits/lego/5.jpg" alt="lego"/>
-        <p>lego</p>
+        <img src="https://randomuser.me/api/portraits/lego/1.jpg" alt="" />
+        Seba
     </picture> -->
 
-    <div id="root"></div>
-
+    <div id="app"></div>
     <script type="text/babel">
-        const app = document.getElementById('root')
-        console.log(app)
+        const app = document.getElementById('app')
+
         const r = React.createElement
 
         const Avatar = () => {
-            const src = `https://randomuser.me/api/portraits/lego/5.jpg`
+            const src = "https://randomuser.me/api/portraits/lego/1.jpg"
 
-            return r('picture', {}, [r('img', { src, alt: 'lego' }), r('p', {}, 'Lego')])
+            return r('picture', {}, [r('img', { src, alt: 'Lego 1'}), 'Seba'])
         }
 
-        const AvatarJSX = () => {
-            const src = `https://randomuser.me/api/portraits/lego/2.jpg`
+        const AvatarJSX = (props) => {
+            const src = `https://randomuser.me/api/portraits/lego/${props.id}.jpg`
 
             return (
                 <picture>
-                    <img src={src} alt='lego'/>
-                    <p>Lego 2</p>    
+                    <img src={src} alt="Lego 2" />
+                    { props.name }
                 </picture>
             )
         }
 
-        ReactDOM.render(r(AvatarJSX), app)
-        // const Avatar = (params) => {
-        //     console.log(params)
+        const App = () => {
+            return (
+                <div>
+                    <AvatarJSX id={1} name="Seba"/>
+                    <AvatarJSX id={2} name="Lean"/>
+                </div>
+            )
+        }
+
+        ReactDOM.render(r(App), app)
+        // const avatar = (props) => { //{ id: 4, name: 'Juan'}
         //     return `
-        //         <picture>
-        //             <img src="https://randomuser.me/api/portraits/lego/${params.id}.jpg" alt="lego"/>
-        //             <p>${params.name}</p>
-        //         </picture>
+        //     <picture>
+        //         <img src="https://randomuser.me/api/portraits/lego/${props.id}.jpg" alt="lego" />
+        //         ${props.name} ${props.lastName || ''}
+        //     </picture>
         //     `
         // }
+        // app.innerHTML = avatar({ id: 4, name: 'Juan'})
+        // app.innerHTML += avatar({ id: 6, name: 'Dante', lastName:'Fernandez'})
 
-        // app.innerHTML = Avatar({ id: 1, name: 'Lego 1'})
-        // app.innerHTML += Avatar({ id: 2, name: 'Lego 2'})
-
-        document.querySelectorAll("img").forEach((img) => {
-            img.addEventListener('click', () => {
-                img.classList.toggle('disabled')
-            })
-        })
     </script>
   </body>
 </html>
