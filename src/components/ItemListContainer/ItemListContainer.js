@@ -1,7 +1,8 @@
 const ItemListContainer = (props) => {
-    console.log(props.greeting)
+    // console.log(title)
+    console.log(props)
     return(
-        <h1>{props.greeting}</h1>
+        <h1>{props.title}</h1>
     )
 }
 
