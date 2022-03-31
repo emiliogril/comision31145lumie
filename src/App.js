@@ -13,8 +13,8 @@ const App = () => {
   return (
       <div className="App">
         <ItemListContainer greeting={'Hola coders'} />
-        <button onClick={() => setShow(!show)}>{show ? 'Desmontar contador' : 'Montar contador'}</button>
-        { show ? <Counter initial={0} stock={10} onAdd={handleOnAdd}/> : null }
+        {/* <button onClick={() => setShow(!show)}>{show ? 'Desmontar contador' : 'Montar contador'}</button>
+        { show ? <Counter initial={0} stock={10} onAdd={handleOnAdd}/> : null } */}
       </div>
   );
 }
