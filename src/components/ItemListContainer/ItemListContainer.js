@@ -1,10 +1,12 @@
+import './ItemListContainer.css'
 import { useState, useEffect } from 'react'
 import { getProducts } from '../../asyncmock'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
     const [products, setProducts] = useState([])
+    const [title, setTitle] = useState()
 
     const { categoryId } = useParams()
 
@@ -16,26 +18,15 @@ const ItemListContainer = (props) => {
         })
     }, [categoryId])
 
-    // const handleOnResize = (e) => {
-    //     console.log(e)
-    //     console.log('Cambio el tamaño de ItemListContainer')
-    // }
-
-    // useEffect(() => {
-    //     window.addEventListener('resize', handleOnResize)
-
-    //     return(() => {
-    //         window.removeEventListener('resize', handleOnResize)
-    //     })
-    // }, [])
-
-    const handleClick = () => {
-        console.log('Hice click en itemlistcontainer')
-    }
+    useEffect(() => {
+        setTimeout(() => {
+            setTitle('Este titulo aparecio despues de 2 seg')
+        }, 2000)
+    })
 
     return(
-        <div onClick={handleClick}>
-            <h1>{props.greeting}</h1>
+        <div className='ItemListContainer'>
+            <h1>{title}</h1>
             <ItemList products={products}/>
         </div>
     )
