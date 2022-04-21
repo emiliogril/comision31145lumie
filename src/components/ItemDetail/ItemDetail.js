@@ -8,7 +8,7 @@ import { useNotification } from '../../notification/Notification'
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
 
-    const { addItem, isInCart } = useContext(CartContext)
+    const { addItem, isInCart, getQuantityProd } = useContext(CartContext)
 
     const { setNotification } = useNotification()
 
@@ -44,9 +44,9 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
             </section>           
             <footer className='ItemFooter'>
                 { 
-                    isInCart(id) 
+                    false 
                         ? <Link to='/cart' className='Option'>Ir al carrito</Link> 
-                        : <Counter onAdd={handleAdd} stock={stock}/> 
+                        : <Counter onAdd={handleAdd} stock={stock} initial={getQuantityProd(id)}/> 
                 } 
             </footer>
         </article>
