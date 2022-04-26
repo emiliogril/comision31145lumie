@@ -7,7 +7,6 @@ import { useNotification } from '../../notification/Notification'
 
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
-
     const { addItem, isInCart, getQuantityProd } = useContext(CartContext)
 
     const { setNotification } = useNotification()
@@ -18,7 +17,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
         }
 
         addItem(productObj)
-        setNotification('error', `Se agregaron ${count} ${name} correctamente`)
+        setNotification('success', `Se agregaron ${count} ${name} correctamente`)
     }
 
     return (
@@ -44,7 +43,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
             </section>           
             <footer className='ItemFooter'>
                 { 
-                    false 
+                    false  
                         ? <Link to='/cart' className='Option'>Ir al carrito</Link> 
                         : <Counter onAdd={handleAdd} stock={stock} initial={getQuantityProd(id)}/> 
                 } 
